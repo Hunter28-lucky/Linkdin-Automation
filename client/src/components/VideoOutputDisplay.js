@@ -1,14 +1,7 @@
 import React from 'react';
 import { 
   FaVideo, 
-  FaChartLine, 
-  FaMusic, 
-  FaClosedCaptioning, 
-  FaFilm, 
-  FaFire,
-  FaPalette,
-  FaHashtag,
-  FaCheckCircle
+  FaHashtag
 } from 'react-icons/fa';
 import './VideoOutputDisplay.css';
 

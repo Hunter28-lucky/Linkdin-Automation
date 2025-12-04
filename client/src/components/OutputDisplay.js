@@ -31,7 +31,8 @@ function OutputDisplay({ data }) {
     };
 
     const handlers = [];
-    sectionRefs.current.forEach((ref, index) => {
+    const sections = sectionRefs.current;
+    sections.forEach((ref, index) => {
       if (ref) {
         const handler = (e) => handleMouseMove(e, ref);
         handlers[index] = handler;
@@ -41,7 +42,7 @@ function OutputDisplay({ data }) {
 
     return () => {
       if (rafId) cancelAnimationFrame(rafId);
-      sectionRefs.current.forEach((ref, index) => {
+      sections.forEach((ref, index) => {
         if (ref && handlers[index]) {
           ref.removeEventListener('mousemove', handlers[index]);
         }
