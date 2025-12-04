@@ -2,6 +2,7 @@
   "version": 2,
   "buildCommand": "npm install && npm run vercel-build",
   "installCommand": "npm install",
+  "outputDirectory": "client/build",
   "framework": null,
   "functions": {
     "api/*.js": {
