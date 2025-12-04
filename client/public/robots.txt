@@ -1,0 +1,25 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://linkedin-automation-rust.vercel.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+
+# Yandex
+User-agent: Yandex
+Allow: /
+Disallow: /api/
