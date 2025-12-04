@@ -90,13 +90,147 @@ function OutputDisplay({ data }) {
   };
 
   const posts = parsePosts(data.posts.viralOptimized || data.posts.raw);
+  const bestPost = posts[0]?.content || '';
+  const hashtags = data.meta?.recommendedHashtags?.slice(0, 7).map(tag => tag.hashtag || `#${tag}`).join(' ') || '';
+  const readyToPost = `${bestPost}\n\n${hashtags}`.trim();
+
+  // Generate professional script for video/audio
+  const generateScript = () => {
+    const topic = data.input?.topic || 'this topic';
+    return `Hello LinkedIn community,
+
+Today I want to share something important about ${topic}.
+
+${bestPost.split('\n').slice(1, 4).join('\n\n')}
+
+This insight has transformed how I approach this area, and I believe it can help you too.
+
+If you found this valuable, let's connect and continue the conversation.
+
+Thanks for watching!`;
+  };
+
+  const generateAudioLink = () => {
+    const script = generateScript();
+    const encodedScript = encodeURIComponent(script);
+    // Using Text-to-Speech service (you can replace with your preferred TTS API)
+    return `https://www.naturalreaders.com/online/?text=${encodedScript}`;
+  };
 
   return (
     <div className="output-container fade-in-up">
+      {/* Quick Copy Summary Section */}
+      <div 
+        ref={(el) => (sectionRefs.current[0] = el)}
+        className="output-section summary-section" 
+        style={{background: 'linear-gradient(135deg, rgba(255, 215, 0, 0.12) 0%, rgba(255, 165, 0, 0.08) 100%)', border: '2px solid rgba(255, 215, 0, 0.3)'}}
+      >
+        <div className="section-header">
+          <FaFire className="section-icon" style={{color: '#FFD700'}} />
+          <h2>⚡ Ready-to-Post Content</h2>
+        </div>
+        
+        <div className="ready-post-card">
+          <h3 style={{color: '#FFD700', marginBottom: '1rem'}}>📋 Copy & Paste</h3>
+          <div className="ready-post-content">
+            <pre style={{
+              background: 'rgba(0, 0, 0, 0.5)',
+              padding: '1.5rem',
+              borderRadius: '12px',
+              border: '1px solid rgba(255, 215, 0, 0.2)',
+              whiteSpace: 'pre-wrap',
+              wordWrap: 'break-word',
+              lineHeight: '1.8',
+              fontSize: '1.05rem'
+            }}>
+              {readyToPost}
+            </pre>
+          </div>
+          <button
+            onClick={() => copyToClipboard(readyToPost, 'ready-post')}
+            className="copy-button"
+            style={{
+              marginTop: '1rem',
+              width: '100%',
+              padding: '1rem',
+              fontSize: '1.1rem',
+              background: copiedIndex === 'ready-post' ? '#00ff88' : 'linear-gradient(135deg, #FFD700, #FFA500)',
+              color: '#000',
+              fontWeight: 'bold'
+            }}
+          >
+            {copiedIndex === 'ready-post' ? <><FaCheckCircle /> Copied!</> : <><FaCopy /> Copy Post</>}
+          </button>
+        </div>
+
+        {/* Script & Audio Section */}
+        <div className="script-audio-section" style={{marginTop: '2rem'}}>
+          <div className="script-card">
+            <h3 style={{color: '#00D9FF', marginBottom: '1rem'}}>🎙️ Professional Script</h3>
+            <div style={{
+              background: 'rgba(0, 0, 0, 0.5)',
+              padding: '1.5rem',
+              borderRadius: '12px',
+              border: '1px solid rgba(0, 217, 255, 0.2)',
+              marginBottom: '1rem'
+            }}>
+              <pre style={{
+                whiteSpace: 'pre-wrap',
+                wordWrap: 'break-word',
+                lineHeight: '1.8',
+                fontSize: '1rem'
+              }}>
+                {generateScript()}
+              </pre>
+            </div>
+            <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+              <button
+                onClick={() => copyToClipboard(generateScript(), 'script')}
+                className="copy-button"
+                style={{
+                  flex: '1',
+                  background: copiedIndex === 'script' ? '#00ff88' : 'linear-gradient(135deg, #00D9FF, #0088FF)',
+                  padding: '0.8rem 1.5rem'
+                }}
+              >
+                {copiedIndex === 'script' ? <><FaCheckCircle /> Copied!</> : <><FaCopy /> Copy Script</>}
+              </button>
+              <a
+                href={generateAudioLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  flex: '1',
+                  padding: '0.8rem 1.5rem',
+                  background: 'linear-gradient(135deg, #FF6B6B, #FF3838)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  fontWeight: '600',
+                  textAlign: 'center',
+                  textDecoration: 'none',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.5rem',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                🔊 Generate Audio
+              </a>
+            </div>
+            <p style={{marginTop: '1rem', fontSize: '0.9rem', color: 'rgba(255, 255, 255, 0.6)', textAlign: 'center'}}>
+              Use this script for video voiceovers or audio posts
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Viral Analysis Section */}
       {data.viralAnalysis && (
         <div 
-          ref={(el) => (sectionRefs.current[0] = el)}
+          ref={(el) => (sectionRefs.current[1] = el)}
           className="output-section" 
           style={{background: 'linear-gradient(135deg, rgba(0, 255, 136, 0.08) 0%, rgba(0, 217, 126, 0.05) 100%)'}}
         >
@@ -118,7 +252,7 @@ function OutputDisplay({ data }) {
       )}
 
       {/* Trends Section */}
-      <div ref={(el) => (sectionRefs.current[1] = el)} className="output-section">
+      <div ref={(el) => (sectionRefs.current[2] = el)} className="output-section">
         <div className="section-header">
           <FaFire className="section-icon fire" />
           <h2>Trending Analysis</h2>
