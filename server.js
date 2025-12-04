@@ -25,8 +25,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
+const path = require('path');
+if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
+  app.use(express.static(path.join(__dirname, 'client/build')));
 }
 
 // API Routes
@@ -81,7 +82,14 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler
+// Serve React app for all non-API routes (must be after API routes)
+if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
+// 404 handler for API routes only
 app.use((req, res) => {
   res.status(404).json({ 
     error: 'Not Found', 
