@@ -1,0 +1,346 @@
+.video-output-container {
+  background: var(--card-bg);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  animation: fadeInUp 0.5s ease;
+}
+
+.video-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.video-icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.video-header h2 {
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Ready-to-Post Section */
+.ready-to-post-section {
+  margin-bottom: 2rem;
+}
+
+.ready-to-post-section .content-box {
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 255, 136, 0.02));
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  border: 2px solid rgba(0, 255, 136, 0.3);
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  flex: 1;
+  min-width: 200px;
+  padding: 1.2rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent));
+  color: var(--bg-primary);
+  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+}
+
+.action-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 255, 136, 0.4);
+}
+
+.action-btn.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.action-btn.secondary:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 255, 136, 0.2);
+}
+
+/* Success Rate Gauge */
+.success-rate-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.05), rgba(0, 255, 136, 0.02));
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.success-rate-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.3rem;
+  color: var(--primary-color);
+}
+
+.success-gauge {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.gauge-circle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.gauge-circle svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.gauge-progress {
+  transition: stroke-dasharray 2s ease;
+  filter: drop-shadow(0 0 10px var(--primary-color));
+}
+
+.gauge-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.rate-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1;
+  display: block;
+}
+
+.rate-label {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.success-details {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border-left: 3px solid var(--primary-color);
+}
+
+/* Output Sections */
+.output-section {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.output-section:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 255, 136, 0.1);
+}
+
+.output-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: var(--text-primary);
+}
+
+.output-section h3 svg {
+  color: var(--accent);
+}
+
+.content-box {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.markdown-content pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Action Checklist */
+.action-checklist {
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.08), rgba(0, 255, 136, 0.03));
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.action-checklist h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.checklist-items {
+  display: grid;
+  gap: 1rem;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.checklist-item:hover {
+  border-color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.checklist-item input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.checklist-item label {
+  cursor: pointer;
+  color: var(--text-primary);
+  font-size: 1rem;
+  user-select: none;
+}
+
+.checklist-item input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+/* Pro Tips */
+.pro-tips {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(255, 215, 0, 0.02));
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.pro-tips h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #ffd700;
+}
+
+.pro-tips ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pro-tips li {
+  padding: 0.75rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.pro-tips li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .video-output-container {
+    padding: 1.5rem;
+  }
+
+  .gauge-circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .rate-number {
+    font-size: 2.5rem;
+  }
+
+  .output-section,
+  .action-checklist,
+  .pro-tips {
+    padding: 1.5rem;
+  }
+}
